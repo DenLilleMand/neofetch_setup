@@ -179,10 +179,15 @@ export SCM_CHECK=true
 
 
 #Print out cool stuff
-figlet DenLilleMand
 #my .neofetch file should be found in github.com/denlillemand/ubuntu_configurations/neofetch/neofetch
 #neofetch --config /home/denlillemand/.neofetch --ascii_distro Arch Linu
-neofetch --config /home/denlillemand/neofetch/neofetch.conf 
+if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+#neofetch --ascii_distro Arch Linu  #Doesn't work unfortunately, tmux doesn't understand when its scripted. :( 
+    echo ""
+else
+    neofetch --config /home/denlillemand/neofetch/neofetch.conf 
+    figlet DenLilleMand
+fi
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
